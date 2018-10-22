@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
+
+
 /**
  * A class to hold details of audio tracks.
  * Individual tracks may be played.
@@ -74,6 +77,13 @@ public class MusicOrganizer
      * Play a track in the collection.
      * @param index The index of the track to be played.
      */
+    
+    public void randomTrack() // Allows for a random song to play
+    {
+        int randomInt = ((int)(Math.random() * (tracks.size()-1)));
+        playTrack(randomInt);
+        
+    }
     public void playTrack(int index)
     {
         if(indexValid(index)) {
