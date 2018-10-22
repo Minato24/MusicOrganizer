@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * A class to hold details of audio tracks.
@@ -28,7 +29,29 @@ public class MusicOrganizer
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
     }
-    
+    /**
+     * Plays songs in random playslist
+     */
+    public void randomPlaylist()
+    {
+        Iterator<Track> it = tracks.iterator();
+        
+        while(it.hasNext())
+        { 
+            int random = (((int)(Math.random()) * ((tracks.size()-1))));
+            playTrack(random);
+            removeTrack(random);
+            
+          
+        }
+        if(!it.hasNext())//Prints message if all songs have played
+        {
+            System.out.println("That's all the songs");
+            readLibrary("../audio");
+        }
+        else
+        randomPlaylist();
+    }    
     /**
      * Add a track file to the collection.
      * @param filename The file name of the track to be added.
